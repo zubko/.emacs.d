@@ -58,10 +58,12 @@
  ;; If there is more than one, they won't work right.
  )
 
-;; Add 'modules' dir to load path
+;; Root config dir
 (defvar config-root-dir (file-name-directory load-file-name)
   "The root dir of this config.")
-(defvar config-modules-dir (expand-file-name  "modules" config-root-dir)
+
+;; Add 'modules' dir to load path
+(defvar config-modules-dir (expand-file-name "modules" config-root-dir)
   "This directory houses all of the built-in modules.")
 (add-to-list 'load-path config-modules-dir)
 
