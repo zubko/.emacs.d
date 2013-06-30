@@ -5,6 +5,7 @@
 ;; - add spell check for english in text and org mode
 ;; - add modes for missing programming languages
 ;; - add dark color scheme
+;; - get zenburn color scheme as git submodule
 ;; - remove the blank top lines in the full screen mode
 ;; - organise much better
 ;; - try auto-completion modules
@@ -72,3 +73,11 @@
 (add-hook 'text-mode-hook 'turn-on-real-auto-save)
 (add-hook 'org-mode-hook 'turn-on-real-auto-save)
 (setq real-auto-save-interval 10) ;; in seconds
+
+;; Themes dir
+(defvar config-themes-dir (expand-file-name "themes" config-root-dir)
+  "The directory for custom color themes")
+(add-to-list 'custom-theme-load-path config-themes-dir)
+
+;; Load best theme
+(load-theme 'zenburn t)
