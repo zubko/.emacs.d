@@ -2,3 +2,8 @@
 .DS_Store
 
 *.local~
+
+/auto-save-list/
+/history
+/elpa
+/places

@@ -10,6 +10,70 @@
 ;; - organise much better
 ;; - try auto-completion modules
 
+;; =======================================
+;; Beginning of config from https://github.com/andschwa/.emacs.d
+;; TODO: add other parts that I like
+
+;; Avoiding bugs.
+(setq load-prefer-newer t)
+
+;; Improved TLS Security.
+(with-eval-after-load 'gnutls
+  (custom-set-variables
+   '(gnutls-verify-error t)
+   '(gnutls-min-prime-bits 3072)))
+
+;; Package setup.
+(eval-when-compile
+  (require 'package)
+  (add-to-list 'package-archives
+               '("melpa" . "https://melpa.org/packages/") t)
+  (add-to-list 'package-archives
+               '("org" . "https://orgmode.org/elpa/") t))
+
+
+;; Initializes the package infrastructure
+(package-initialize)
+
+;; If there are no archived package contents, refresh them
+(when (not package-archive-contents)
+  (package-refresh-contents))
+
+;; Installs packages
+;; TODO: check what's the issue with packages
+;; myPackages contains a list of package names
+;; (defvar myPackages
+;;  '("material-theme"                ;; Theme
+;;    )
+;;  )
+;; Scans the list in myPackages
+;; If the package listed is not already installed, install it
+;;(mapc #'(lambda (package)
+;;          (unless (package-installed-p package)
+;;            (package-install package)))
+;;      myPackages)
+
+
+;; ======================
+;; Modules dir
+
+;; Root config dir
+(defvar config-root-dir (file-name-directory load-file-name)
+  "The root dir of this config.")
+
+;; Add 'modules' dir to load path
+(defvar config-modules-dir (expand-file-name "modules" config-root-dir)
+  "This directory houses all of the built-in modules.")
+(add-to-list 'load-path config-modules-dir)
+
+
+;; ======================
+;; Better defaults from https://git.sr.ht/~technomancy/better-defaults
+(require 'better-defaults)
+
+
+;; ======================
+;; My settings
 
 ;; Disable cursor blink
 (blink-cursor-mode 0)
@@ -32,7 +96,8 @@
 (setq scroll-step 1)
 
 ;; Don't create backup files
-(setq make-backup-files nil) 
+;; TODO: check if `better-defaults` handles backups well
+;; (setq make-backup-files nil)
 
 ;; Show line-number in the mode line
 (line-number-mode 1)
@@ -59,20 +124,13 @@
  ;; If there is more than one, they won't work right.
  )
 
-;; Root config dir
-(defvar config-root-dir (file-name-directory load-file-name)
-  "The root dir of this config.")
-
-;; Add 'modules' dir to load path
-(defvar config-modules-dir (expand-file-name "modules" config-root-dir)
-  "This directory houses all of the built-in modules.")
-(add-to-list 'load-path config-modules-dir)
-
 ;; Auto-saving the buffer to the same file
 (require 'real-auto-save)
 (add-hook 'text-mode-hook 'turn-on-real-auto-save)
 (add-hook 'org-mode-hook 'turn-on-real-auto-save)
-(setq real-auto-save-interval 10) ;; in seconds
+(setq real-auto-save-interval 5) ;; in seconds
+;; Try autosave for all modes
+(turn-on-real-auto-save)
 
 ;; Themes dir
 (defvar config-themes-dir (expand-file-name "themes" config-root-dir)
@@ -81,3 +139,6 @@
 
 ;; Load best theme
 (load-theme 'zenburn t)
+
+;; Reload the file if it was changed in another editor
+(global-auto-revert-mode t)
