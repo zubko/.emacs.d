@@ -1,6 +1,7 @@
 ;; Emacs config: root file
 
 ;; TODO:
+;; - build and install Emacs 27
 ;; - add more sophisticated auto-save, it would be nice if it saved with 10 seconds after the edit, and didn't save if file wasn't changed
 ;; - add spell check for english in text and org mode
 ;; - add modes for missing programming languages
@@ -23,6 +24,12 @@
    '(gnutls-verify-error t)
    '(gnutls-min-prime-bits 3072)))
 
+;; Fix TLS error on emacs 26 and libgnutls (Debian 10 current versions)
+;; https://www.reddit.com/r/orgmode/comments/cvmjjr/workaround_for_tlsrelated_bad_request_and_package/
+(when (and (>= libgnutls-version 30603)
+            (version<= emacs-version "26.2"))
+   (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3"))
+
 ;; Package setup.
 (eval-when-compile
   (require 'package)
@@ -40,19 +47,18 @@
   (package-refresh-contents))
 
 ;; Installs packages
-;; TODO: check what's the issue with packages
 ;; myPackages contains a list of package names
-;; (defvar myPackages
-;;  '("material-theme"                ;; Theme
-;;    )
-;;  )
+ ;; (defvar myPackages
+ ;;   '('better-defaults
+ ;;     'material-theme
+ ;;    )
+ ;;  )
 ;; Scans the list in myPackages
 ;; If the package listed is not already installed, install it
-;;(mapc #'(lambda (package)
-;;          (unless (package-installed-p package)
-;;            (package-install package)))
-;;      myPackages)
-
+;; (mapc #'(lambda (package)
+;;           (unless (package-installed-p package)
+;;             (package-install package)))
+;;       myPackages)
 
 ;; ======================
 ;; Modules dir
