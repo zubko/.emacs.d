@@ -46,19 +46,35 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-;; Installs packages
-;; myPackages contains a list of package names
- ;; (defvar myPackages
- ;;   '('better-defaults
- ;;     'material-theme
- ;;    )
- ;;  )
-;; Scans the list in myPackages
-;; If the package listed is not already installed, install it
-;; (mapc #'(lambda (package)
-;;           (unless (package-installed-p package)
-;;             (package-install package)))
-;;       myPackages)
+(eval-when-compile
+  (unless (package-installed-p 'use-package)
+    (package-refresh-contents)
+    (package-install 'use-package))
+  (require 'use-package))
+
+(customize-set-variable 'use-package-enable-imenu-support t)
+(customize-set-variable 'use-package-always-ensure t)
+
+(defmacro use-feature (name &rest args)
+  "Like `use-package' for NAME and ARGS, but with `:ensure' nil."
+  (declare (indent defun))
+  `(use-package ,name
+     :ensure nil
+     ,@args))
+
+(use-package quelpa :disabled)
+(use-package quelpa-use-package :disabled)
+
+(customize-set-variable 'quelpa-use-package-inhibit-loading-quelpa t)
+
+;; Lisp list, string, and file extensions.
+(use-package dash)
+(use-package s)
+(use-package f)
+
+;; Save data files consistently.
+(use-package no-littering)
+
 
 ;; ======================
 ;; Modules dir
@@ -75,7 +91,7 @@
 
 ;; ======================
 ;; Better defaults from https://git.sr.ht/~technomancy/better-defaults
-(require 'better-defaults)
+(use-package better-defaults)
 
 
 ;; ======================
