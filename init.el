@@ -154,13 +154,17 @@
 ;; Try autosave for all modes
 (turn-on-real-auto-save)
 
-;; Themes dir
+;; Reload the file if it was changed in another editor
+(global-auto-revert-mode t)
+
+;; ===========================================
+;; Themes
+
+;; local themes
 (defvar config-themes-dir (expand-file-name "themes" config-root-dir)
   "The directory for custom color themes")
 (add-to-list 'custom-theme-load-path config-themes-dir)
 
-;; Load best theme
-(load-theme 'zenburn t)
-
-;; Reload the file if it was changed in another editor
-(global-auto-revert-mode t)
+;; from package
+(use-package material-theme)
+(load-theme 'material t)
