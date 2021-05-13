@@ -167,6 +167,10 @@
   (defun track-mouse (e)) 
   (setq mouse-sel-mode t))
 
+;; Better undo
+(use-package undo-tree)
+(global-undo-tree-mode)
+
 
 ;; ===========================================
 ;; Themes
