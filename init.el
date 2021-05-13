@@ -36,7 +36,10 @@
   (add-to-list 'package-archives
                '("melpa" . "https://melpa.org/packages/") t)
   (add-to-list 'package-archives
-               '("org" . "https://orgmode.org/elpa/") t))
+               '("org" . "https://orgmode.org/elpa/") t)
+  (add-to-list 'package-archives
+               '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+  )
 
 
 ;; Initializes the package infrastructure
@@ -157,6 +160,14 @@
 ;; Reload the file if it was changed in another editor
 (global-auto-revert-mode t)
 
+;; iterm2 mouse support
+(unless window-system
+  (require 'mouse)
+  (xterm-mouse-mode t)
+  (defun track-mouse (e)) 
+  (setq mouse-sel-mode t))
+
+
 ;; ===========================================
 ;; Themes
 
@@ -168,3 +179,9 @@
 ;; from package
 (use-package material-theme)
 (load-theme 'material t)
+
+;; ===========================================
+;; Dev
+
+(use-package magit
+  :pin melpa-stable)
