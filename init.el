@@ -112,7 +112,7 @@
     (scroll-bar-mode 0))
 
 ;; For Cocoa
-;; In every buffer, the line which contains the cursor 
+;; In every buffer, the line which contains the cursor
 ;; will be fully highlighted
 (if (eq window-system 'ns)
     (global-hl-line-mode 1))
@@ -167,7 +167,7 @@
 (unless window-system
   (require 'mouse)
   (xterm-mouse-mode t)
-  (defun track-mouse (e)) 
+  (defun track-mouse (e))
   (setq mouse-sel-mode t))
 
 ;; Better undo
