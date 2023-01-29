@@ -190,6 +190,13 @@
 (advice-add 'move-text-up :after 'indent-region-advice)
 (advice-add 'move-text-down :after 'indent-region-advice)
 
+;; scroll half of the screen
+(use-package golden-ratio-scroll-screen)
+(global-set-key [remap scroll-down-command] 'golden-ratio-scroll-screen-down)
+(global-set-key [remap scroll-up-command] 'golden-ratio-scroll-screen-up)
+(setq golden-ratio-scroll-highlight-flag nil)
+(setq golden-ratio-scroll-screen-ratio 2.0)
+
 
 ;; ===========================================
 ;; Themes
