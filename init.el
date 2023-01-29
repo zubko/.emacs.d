@@ -158,6 +158,7 @@
 (require 'real-auto-save)
 (add-hook 'text-mode-hook 'turn-on-real-auto-save)
 (add-hook 'org-mode-hook 'turn-on-real-auto-save)
+(add-hook 'emacs-lisp-mode-hook 'turn-on-real-auto-save)
 (setq real-auto-save-interval 5) ;; in seconds
 
 ;; Reload the file if it was changed in another editor
