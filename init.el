@@ -197,7 +197,6 @@
 (setq golden-ratio-scroll-highlight-flag nil)
 (setq golden-ratio-scroll-screen-ratio 2.0)
 
-
 ;; ===========================================
 ;; Themes
 
@@ -217,4 +216,5 @@
   :pin melpa-stable
   :bind (("C-x g" . magit)))
 
-
+;; jump to function definition (at least in emacs-lisp)
+(global-set-key (kbd "C-h C-f") 'find-function)
