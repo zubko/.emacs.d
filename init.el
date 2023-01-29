@@ -1,13 +1,15 @@
 ;; Emacs config: root file
 
 ;; TODO:
-;; - add spell check for english in text and org mode
-;; - add modes for missing programming languages
-;; - get zenburn color scheme as git submodule
-;; - remove the blank top lines in the full screen mode
-;; - organise much better
-;; - try auto-completion modules
+;; - add exit confirmation
 ;; - save window location locally for GUI mode
+;; - add spell check for english in text and org mode
+;; - try auto-completion modules
+;; - add modes for missing programming languages
+;; -- add TypeScript mode
+;; - try Copilot package
+;; - get zenburn color scheme as git submodule
+;; - organise much better
 
 ;; =======================================
 ;; Beginning of config from https://github.com/andschwa/.emacs.d
