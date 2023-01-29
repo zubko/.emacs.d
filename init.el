@@ -174,6 +174,22 @@
 (use-package undo-tree)
 (global-undo-tree-mode)
 
+;; Move text
+(use-package move-text)
+(move-text-default-bindings) ;; M-up, M-down
+(global-set-key [C-s-down] 'move-text-down) ;; VS Code
+(global-set-key [C-s-up] 'move-text-up) ;; VS Code
+
+;; auto-indent after moving
+(defun indent-region-advice (&rest ignored)
+  (let ((deactivate deactivate-mark))
+    (if (region-active-p)
+        (indent-region (region-beginning) (region-end))
+      (indent-region (line-beginning-position) (line-end-position)))
+    (setq deactivate-mark deactivate)))
+(advice-add 'move-text-up :after 'indent-region-advice)
+(advice-add 'move-text-down :after 'indent-region-advice)
+
 
 ;; ===========================================
 ;; Themes
