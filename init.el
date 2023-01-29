@@ -1,15 +1,13 @@
 ;; Emacs config: root file
 
 ;; TODO:
-;; - build and install Emacs 27
-;; - add more sophisticated auto-save, it would be nice if it saved with 10 seconds after the edit, and didn't save if file wasn't changed
 ;; - add spell check for english in text and org mode
 ;; - add modes for missing programming languages
-;; - add dark color scheme
 ;; - get zenburn color scheme as git submodule
 ;; - remove the blank top lines in the full screen mode
 ;; - organise much better
 ;; - try auto-completion modules
+;; - save window location locally for GUI mode
 
 ;; =======================================
 ;; Beginning of config from https://github.com/andschwa/.emacs.d
