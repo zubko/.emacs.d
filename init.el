@@ -149,6 +149,11 @@
  ;; If there is more than one, they won't work right.
  )
 
+;; Set font and font size for Mac
+(when (eq system-type 'darwin)
+      (set-face-attribute 'default nil :family "Fira Code")
+      (set-face-attribute 'default nil :height 175))
+
 ;; Auto-saving the buffer to the same file
 (require 'real-auto-save)
 (add-hook 'text-mode-hook 'turn-on-real-auto-save)
