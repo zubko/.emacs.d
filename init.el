@@ -154,13 +154,6 @@
       (set-face-attribute 'default nil :family "Fira Code")
       (set-face-attribute 'default nil :height 175))
 
-;; Auto-saving the buffer to the same file
-(require 'real-auto-save)
-(add-hook 'text-mode-hook 'turn-on-real-auto-save)
-(add-hook 'org-mode-hook 'turn-on-real-auto-save)
-(add-hook 'emacs-lisp-mode-hook 'turn-on-real-auto-save)
-(setq real-auto-save-interval 5) ;; in seconds
-
 ;; Reload the file if it was changed in another editor
 (global-auto-revert-mode t)
 
