@@ -212,3 +212,10 @@
 
 ;; jump to function definition (at least in emacs-lisp)
 (global-set-key (kbd "C-h C-f") 'find-function)
+
+;; ===========================================
+;; Local settings
+
+(load "~/.emacs.d/local.el")
+
+
