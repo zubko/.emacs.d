@@ -100,6 +100,9 @@
 ;; ======================
 ;; My settings
 
+;; Disable welcome message
+(setq inhibit-startup-screen t)
+
 ;; Disable cursor blink
 (blink-cursor-mode 0)
 
