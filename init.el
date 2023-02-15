@@ -212,11 +212,14 @@
 (global-set-key (kbd "C-h C-f") 'find-function)
 
 ;; ===========================================
-;; Local settings
+;; Import from other files
 
+;; Local settings
 (load "~/.emacs.d/local.el")
 
 ;; Platform settings
 (when (eq system-type 'darwin)
-  (load "~/.emacs.d/init.mac.el"))
+  (load "~/.emacs.d/init-mac.el"))
 
+;; FS utils
+(load "~/.emacs.d/init-fs.el")
