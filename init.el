@@ -152,11 +152,6 @@
  ;; If there is more than one, they won't work right.
  )
 
-;; Set font and font size for Mac
-(when (eq system-type 'darwin)
-      (set-face-attribute 'default nil :family "Fira Code")
-      (set-face-attribute 'default nil :height 175))
-
 ;; Reload the file if it was changed in another editor
 (global-auto-revert-mode t)
 
@@ -221,4 +216,7 @@
 
 (load "~/.emacs.d/local.el")
 
+;; Platform settings
+(when (eq system-type 'darwin)
+  (load "~/.emacs.d/init.mac.el"))
 
